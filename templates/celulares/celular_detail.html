@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Dispositivo: {{ celular.nombre }}</h1>
+    <table class="table table-striped table-hover table-responsive" style="text-align: center">
+        <thead>
+            <th>Eco indicador</th>
+            <th>Puntuación</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Materiales</td>
+                <td>{{ celular.materiales |floatformat:2}} </td>
+            </tr>
+            <tr>
+                <td>Requisitos de uso de energía</td>
+                <td>{{ celular.uso_energia |floatformat:2}} </td>
+            </tr>
+            <tr>
+                <td>Restricciones de sustancias en la batería del teléfono móvil</td>
+                <td> {{ celular.bateria |floatformat:2}} </td>
+            </tr>
+            <tr>
+                <td>Gestión del final de la vida</td>
+                <td> {{ celular.final_vida |floatformat:2}} </td>
+            </tr>
+            <tr>
+                <td>Embalaje y material impreso</td>
+                <td>{{ celular.embalaje |floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Prácticas corporativas</td>
+                <td>{{ celular.corporativo |floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Fabricación y operaciones</td>
+                <td>{{ celular.fabricacion |floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>GENERAL</td>
+                <td>{{ celular.general |floatformat:2}}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if user.is_authenticated %}
+        <a class="button btn btn-secondary" href="{{ celular.get_edit_url }}">EDITAR CALIFICACIÓN</a>
+    {% endif %}
+
+{% endblock %}

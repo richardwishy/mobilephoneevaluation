@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Evaluación del Impacto Ambiental de Dispositivos Móviles Celulares en Colombia basada en la Recomendación ITU-T L.1015 y un caso de estudio</h1>
+  {% if lista_celular %}
+  <main class="leaderboard__profiles">
+    {% for cel in lista_celular %}
+         <a href="{{ cel.get_absolute_url }}">
+        <article class="leaderboard__profile">
+     <span class="leaderboard__name">{{ cel.nombre }}</span>
+      <span class="leaderboard__value">{{ cel.general*100 |floatformat:2}}</span>
+    </article>
+         </a>
+    {% endfor %}
+  </main>
+  {% else %}
+    <p>No hay celulares registrados.</p>
+  {% endif %}
+    {% if user.is_authenticated %}
+        <a  class="button btn btn-primary" href="{% url 'crear_celular' %}">CREAR NUEVO</a>
+    {% endif %}
+{% endblock %}

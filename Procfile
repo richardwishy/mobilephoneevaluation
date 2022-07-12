@@ -1,0 +1,1 @@
+web: gunicorn evaluacion_celulares.wsgi --log-file -
